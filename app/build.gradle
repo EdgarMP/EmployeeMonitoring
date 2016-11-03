@@ -1,0 +1,62 @@
+buildscript {
+    repositories {
+        maven { url 'https://maven.fabric.io/public' }
+        jcenter();
+    }
+
+    dependencies {
+
+        classpath 'io.fabric.tools:gradle:1.+'
+        classpath 'com.google.gms:google-services:2.0.0-beta6'
+
+    }
+}
+apply plugin: 'com.android.application'
+apply plugin: 'io.fabric'
+
+
+repositories {
+    maven { url 'https://maven.fabric.io/public' }
+    jcenter();
+}
+
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.2"
+
+
+//    compileSdkVersion 'android-N'
+//    buildToolsVersion "24.0.0 rc1"
+
+    defaultConfig {
+        applicationId "monitoringcom.oxxo.oxxomonitoring"
+        minSdkVersion 14
+        targetSdkVersion 23
+//        minSdkVersion 'N'
+//        targetSdkVersion 'N'
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    compile 'com.google.android.gms:play-services:8.4.0'
+    compile 'com.android.support:appcompat-v7:23.2.1'
+    compile 'com.android.support:design:23.2.1'
+    compile 'com.android.support:cardview-v7:23.2.1'
+    compile 'com.android.volley:volley:1.0.0'
+    compile 'com.github.jd-alexander:library:1.1.0'
+    compile('com.crashlytics.sdk.android:crashlytics:2.5.5@aar') {
+        transitive = true;
+    }
+    apply plugin: 'com.google.gms.google-services'
+}
